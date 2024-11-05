@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="prueba.fx.Controllers.MainController" stylesheets="@styles.css">
+
+    <!-- Área principal donde se muestran los diferentes paneles -->
+    <center>
+        <TabPane fx:id="tabPane" styleClass="tab-pane">
+            <tabs>
+                <Tab text="Inicio">
+                    <VBox alignment="CENTER" spacing="20" styleClass="tab-content">
+                        <Text text="Bienvenido a la Tienda!" styleClass="tab-title"/>
+                    </VBox>
+                </Tab>
+                <Tab text="Productos">
+                    <VBox alignment="CENTER" spacing="20" styleClass="tab-content">
+                        <Text text="Aquí estarán los productos." styleClass="tab-title"/>
+                    </VBox>
+                </Tab>
+                <Tab text="Carrito">
+                    <VBox alignment="CENTER" spacing="20" styleClass="tab-content">
+                        <Text text="Tu carrito está vacío." styleClass="tab-title"/>
+                    </VBox>
+                </Tab>
+                <Tab text="Historial">
+                    <VBox alignment="CENTER" spacing="20" styleClass="tab-content">
+                        <Text text="Aquí estará tu historial de compras." styleClass="tab-title"/>
+                    </VBox>
+                </Tab>
+                <Tab text="Lista de Deseos">
+                    <VBox alignment="CENTER" spacing="20" styleClass="tab-content">
+                        <Text text="Aquí estará tu lista de deseos." styleClass="tab-title"/>
+                    </VBox>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+
+    <!-- Barra de botones en la esquina superior derecha -->
+</BorderPane>
