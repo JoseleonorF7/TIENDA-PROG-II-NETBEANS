@@ -16,16 +16,13 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
     
-    @Override
+   @Override
     public void start(Stage primaryStage) {
         try {
-            // Carga el archivo FXML de login
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("Login.fxml"));
-            Parent root = loader.load();
-            
-            // Configura la escena
-            Scene scene = new Scene(root);
-            primaryStage.setTitle("Tienda Virtual - Login");
+            // Actualiza la ruta al archivo Main.fxml
+            Parent root = FXMLLoader.load(getClass().getResource("/prueba/fx/components/Main.fxml"));
+            Scene scene = new Scene(root, 800, 600);
+            primaryStage.setTitle("Tienda Virtual");
             primaryStage.setScene(scene);
             primaryStage.show();
         } catch (Exception e) {
@@ -34,6 +31,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args); // Inicia la aplicación
+        launch(args);
     }
+
 }
