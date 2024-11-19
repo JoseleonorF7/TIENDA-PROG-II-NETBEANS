@@ -1,47 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/23.0.1" fx:controller="prueba.fx.Controllers.MainController" stylesheets="@styles.css">
-
+<BorderPane prefHeight="571.0" prefWidth="933.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="prueba.fx.Controllers.MainController">
+    <stylesheets>
+        <URL value="@/prueba/fx/Styles/main.css" />
+    </stylesheets>
     <!-- Área principal donde se muestran los diferentes paneles -->
-    <center>
-        <TabPane fx:id="tabPane" styleClass="tab-pane">
-            <tabs>
-                <Tab text="Inicio">
-                    <VBox alignment="CENTER" spacing="20" styleClass="tab-content">
-                        <Text text="Bienvenido a la Tienda!" styleClass="tab-title"/>
-                    </VBox>
-                </Tab>
-                <Tab text="Productos">
-                    <VBox alignment="CENTER" spacing="20" styleClass="tab-content">
-                        <Text text="Aquí estarán los productos." styleClass="tab-title"/>
-                    </VBox>
-                </Tab>
-                <Tab text="Carrito">
-                    <VBox alignment="CENTER" spacing="20" styleClass="tab-content">
-                        <Text text="Tu carrito está vacío." styleClass="tab-title"/>
-                    </VBox>
-                </Tab>
-                <Tab text="Historial">
-                    <VBox alignment="CENTER" spacing="20" styleClass="tab-content">
-                        <Text text="Aquí estará tu historial de compras." styleClass="tab-title"/>
-                    </VBox>
-                </Tab>
-                <Tab text="Lista de Deseos">
-                    <VBox alignment="CENTER" spacing="20" styleClass="tab-content">
-                        <Text text="Aquí estará tu lista de deseos." styleClass="tab-title"/>
-                    </VBox>
-                </Tab>
-            </tabs>
-        </TabPane>
-    </center>
+   <center>
+    <TabPane fx:id="tabPane" styleClass="tab-pane">
+        <tabs>
+            <Tab fx:id="inicioTab" text="Inicio" />
+            <Tab fx:id="productosTab" text="Productos" />
+            <Tab fx:id="carritoTab" text="Carrito" />
+            <Tab fx:id="historialTab" text="Historial" />
+            <Tab fx:id="listaDeseosTab" text="Lista de Deseos" />
+        </tabs>
+    </TabPane>
+</center>
 
     <!-- Barra de botones en la esquina superior derecha -->
+ <top>
+             <HBox alignment="CENTER_LEFT" spacing="10" style="-fx-background-color: #ffff; -fx-padding: 10;" />
+        <HBox alignment="CENTER_RIGHT" prefHeight="76.0" prefWidth="687.0" spacing="10" style="-fx-background-color: #2e2e2e; -fx-padding: 10;">
+         <Text fill="#f5eeee" strokeType="OUTSIDE" strokeWidth="0.0" text="TIENDA VIRTUAL" textAlignment="CENTER">
+            <font>
+               <Font name="Times New Roman Bold" size="24.0" />
+            </font>
+         </Text>
+            <!-- Botones visibles antes de iniciar sesión -->
+            <Button fx:id="openLoginModal" onAction="#openLoginModal" prefHeight="25.0" prefWidth="113.0" style="-fx-background-color: #0c9410;" styleClass="top-button" text="Iniciar Sesión" textFill="#f7f8f8" visible="true">
+            <font>
+               <Font name="Times New Roman Bold" size="12.0" />
+            </font></Button>
+            <Button fx:id="openRegisterModal" onAction="#openRegisterModal" prefHeight="25.0" prefWidth="84.0" style="-fx-background-color: #0c9410;" styleClass="top-button" text="Registro" textFill="#fcf9f9" visible="true">
+            <font>
+               <Font name="Times New Roman Bold" size="12.0" />
+            </font></Button>
+            
+            <!-- Nombre de usuario y botón de cierre de sesión visibles después de iniciar sesión -->
+            <Label fx:id="userNameLabel" styleClass="top-button" text="" visible="false" />
+            <Button fx:id="logoutButton" onAction="#handleLogout" styleClass="top-button" text="Cerrar Sesión" visible="false" />
+        </HBox>
+    </top>
 </BorderPane>
