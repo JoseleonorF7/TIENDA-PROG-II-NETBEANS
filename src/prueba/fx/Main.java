@@ -21,7 +21,7 @@ public class Main extends Application {
         try {
             // Actualiza la ruta al archivo Main.fxml
             Parent root = FXMLLoader.load(getClass().getResource("/prueba/fx/components/Main.fxml"));
-            Scene scene = new Scene(root, 800, 600);
+            Scene scene = new Scene(root, 750, 500);
             primaryStage.setTitle("Tienda Virtual");
             primaryStage.setScene(scene);
             primaryStage.show();
