@@ -29,8 +29,13 @@ public class LoginController implements Initializable {
     // Ruta para guardar el archivo en el Escritorio del usuario
     private static final String FILE_PATH = Paths.get(System.getProperty("user.home"), "Desktop", "cuentas.txt").toString();
 
-    @FXML
-    private void handleLogin() {
+    private MainController mainController; // Inyecta MainController
+
+    public void setMainController(MainController mainController) {
+        this.mainController = mainController;
+    }
+
+    public void handleLogin() {
         String email = emailField.getText();
         String password = passwordField.getText();
 
@@ -39,10 +44,10 @@ public class LoginController implements Initializable {
             return;
         }
 
-        // Comprobación en el archivo
         if (validateLogin(email, password)) {
             showAlert("Iniciar Sesión", "Inicio de sesión exitoso!", Alert.AlertType.INFORMATION);
-            closeWindow(); // Cierra el modal
+            mainController.onLoginSuccess(email);  // Llama al método en MainController
+            closeWindow();
         } else {
             showAlert("Error", "Correo o Contraseña incorrectos", Alert.AlertType.ERROR);
         }
