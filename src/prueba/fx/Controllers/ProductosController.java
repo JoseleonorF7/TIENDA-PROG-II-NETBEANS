@@ -46,49 +46,48 @@ public class ProductosController implements Initializable {
         cargarProductos();
     }
 
-private void buscarProductos() {
-    String query = searchField.getText().toLowerCase();
-    productPane.getChildren().clear(); // Limpiar el panel de productos
+    private void buscarProductos() {
+        String query = searchField.getText().toLowerCase();
+        productPane.getChildren().clear(); // Limpiar el panel de productos
 
-    // Simulación de búsqueda
-    for (int i = 1; i <= 6; i++) {
-        String productName = "Producto " + i;
-        if (productName.toLowerCase().contains(query)) {
-            Pane product = crearProducto(productName, "file:src/main/resources/prueba/fx/images/product" + i + ".png");
-            productPane.getChildren().add(product);
+        // Simulación de búsqueda
+        for (int i = 1; i <= 6; i++) {
+            String productName = "Producto " + i;
+            if (productName.toLowerCase().contains(query)) {
+                Pane product = crearProducto(productName, "file:src/main/resources/prueba/fx/images/product" + i + ".png");
+                productPane.getChildren().add(product);
+            }
+        }
+
+        if (productPane.getChildren().isEmpty()) {
+            System.out.println("No se encontraron productos para: " + query);
         }
     }
 
-    if (productPane.getChildren().isEmpty()) {
-        System.out.println("No se encontraron productos para: " + query);
-    }
-}
+    private void filtrarPorPrecio() {
+        productPane.getChildren().clear(); // Limpiar el panel de productos
 
-private void filtrarPorPrecio() {
-    productPane.getChildren().clear(); // Limpiar el panel de productos
+        for (int i = 1; i <= 6; i++) {
+            Pane product = crearProducto("Producto " + i + " - Precio: $" + (i * 10),
+                    "file:src/main/resources/prueba/fx/images/product" + i + ".png");
+            productPane.getChildren().add(product);
+        }
 
-    // Simulación: Productos ordenados por precio (en este ejemplo, el ID representa el precio)
-    for (int i = 1; i <= 6; i++) {
-        Pane product = crearProducto("Producto " + i + " - Precio: $" + (i * 10),
-                "file:src/main/resources/prueba/fx/images/product" + i + ".png");
-        productPane.getChildren().add(product);
+        System.out.println("Productos filtrados por precio.");
     }
 
-    System.out.println("Productos filtrados por precio.");
-}
+    private void filtrarPorPopularidad() {
+        productPane.getChildren().clear(); // Limpiar el panel de productos
 
-private void filtrarPorPopularidad() {
-    productPane.getChildren().clear(); // Limpiar el panel de productos
+        // Simulación: Productos ordenados por popularidad (inverso del ID para variar)
+        for (int i = 6; i >= 1; i--) {
+            Pane product = crearProducto("Producto " + i + " - Popularidad: " + i + " estrellas",
+                    "file:src/main/resources/prueba/fx/images/product" + i + ".png");
+            productPane.getChildren().add(product);
+        }
 
-    // Simulación: Productos ordenados por popularidad (inverso del ID para variar)
-    for (int i = 6; i >= 1; i--) {
-        Pane product = crearProducto("Producto " + i + " - Popularidad: " + i + " estrellas",
-                "file:src/main/resources/prueba/fx/images/product" + i + ".png");
-        productPane.getChildren().add(product);
+        System.out.println("Productos filtrados por popularidad.");
     }
-
-    System.out.println("Productos filtrados por popularidad.");
-}
 
     private void cargarProductos() {
         productPane.getChildren().clear(); // Limpiar productos anteriores
